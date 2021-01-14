@@ -1,29 +1,38 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import './App.css';
+import Memo from './memo/Memo';
+import AddForm from './memo/AddForm';
+import FindForm from './memo/FindForm';
+import DelForm from './memo/DelForm';
 
 class App extends Component {
 
-  msgStyle = {
-    fontSize:'24px',
-    color:'#900',
-    margin:'20px 0',
-    padding:'5px',
-    borderBottom:'2px solid #900'
+  td ={
+    width:'250px'
   }
 
   constructor(props){
-    super();
-    this.state ={
-      msg:'Hello Component',
-    }
+    super(props);
   }
 
   render() {
-    return <div>
-      <h1>React</h1>
-      <p style={this.msgStyle}>{this.state.msg}</p>
-      <p style={this.msgStyle}>{this.props.msg}</p>
-    </div>;
+    return (
+      <div>
+        <h1>Memo</h1>
+        <AddForm />
+        <hr />
+        <table>
+          <tbody>
+            <tr>
+              <td style={this.td}><FindForm /></td>
+              <td style={this.td}><DelForm /></td>
+            </tr>
+          </tbody>
+        </table>
+        <Memo />
+      </div>
+    );
   }
 }
 
